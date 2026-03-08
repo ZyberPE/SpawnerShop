@@ -3,6 +3,7 @@
 namespace MobSpawners;
 
 use pocketmine\scheduler\Task;
+use pocketmine\block\tile\Tile;
 
 class SpawnerTask extends Task{
 
@@ -20,6 +21,10 @@ class SpawnerTask extends Task{
 
                 foreach($chunk->getTiles() as $tile){
 
+                    if(!$tile instanceof Tile){
+                        continue;
+                    }
+
                     $nbt = $tile->getNamedTag();
 
                     if(!$nbt->getTag("spawner_type")){
@@ -29,9 +34,7 @@ class SpawnerTask extends Task{
                     $type = $nbt->getString("spawner_type");
                     $level = $nbt->getInt("spawner_level", 1);
 
-                    $amount = $level;
-
-                    MobStack::spawnStack($tile->getPosition(), $type, $amount);
+                    MobStack::spawnStack($tile->getPosition(), $type, $level);
                 }
             }
         }
