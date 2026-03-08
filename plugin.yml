@@ -1,4 +1,4 @@
-name: MobSpawners
+name: SpawnerShop
 main: MobSpawners\Main
 version: 1.0.0
 api: 5.0.0
@@ -9,6 +9,7 @@ commands:
   spawnershop:
     description: Teleport to spawner shop
     aliases: [ss]
+    permission: spawnershop.use
 
   spawnergive:
     description: Give a player a spawner
@@ -16,5 +17,8 @@ commands:
     permission: spawner.give
 
 permissions:
+  spawnershop.use:
+    default: true
+
   spawner.give:
     default: op
