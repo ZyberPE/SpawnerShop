@@ -2,6 +2,7 @@
 
 namespace MobSpawners;
 
+use pocketmine\plugin\PluginBase;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 
@@ -20,12 +21,9 @@ class SpawnerManager{
         $nbt = $item->getNamedTag();
         $nbt->setString("spawner_type", $type);
         $nbt->setInt("spawner_level", $level);
-
         $item->setNamedTag($nbt);
 
-        $name = ucfirst($type) . " Spawner";
-
-        $item->setCustomName("§r§e".$name);
+        $item->setCustomName("§e".ucfirst($type)." Spawner");
 
         $item->setLore([
             "§7Level: §e".$level
@@ -41,4 +39,5 @@ class SpawnerManager{
     public function getSpawnerType(Item $item): string{
         return $item->getNamedTag()->getString("spawner_type", "");
     }
+
 }
