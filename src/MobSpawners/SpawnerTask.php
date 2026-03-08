@@ -3,7 +3,6 @@
 namespace MobSpawners;
 
 use pocketmine\scheduler\Task;
-use pocketmine\block\VanillaBlocks;
 
 class SpawnerTask extends Task{
 
@@ -20,10 +19,6 @@ class SpawnerTask extends Task{
             foreach($world->getLoadedChunks() as $chunk){
 
                 foreach($chunk->getTiles() as $tile){
-
-                    if(!$tile instanceof \pocketmine\block\tile\Tile){
-                        continue;
-                    }
 
                     $nbt = $tile->getNamedTag();
 
