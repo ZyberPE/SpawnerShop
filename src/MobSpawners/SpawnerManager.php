@@ -4,7 +4,6 @@ namespace MobSpawners;
 
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
-use pocketmine\nbt\tag\CompoundTag;
 
 class SpawnerManager{
 
@@ -16,7 +15,7 @@ class SpawnerManager{
 
     public function createSpawner(string $type, int $level): Item{
 
-        $item = VanillaBlocks::SPAWNER()->asItem();
+        $item = VanillaBlocks::MOB_SPAWNER()->asItem();
 
         $nbt = $item->getNamedTag();
         $nbt->setString("spawner_type", $type);
@@ -24,11 +23,9 @@ class SpawnerManager{
 
         $item->setNamedTag($nbt);
 
-        $config = $this->plugin->getConfig();
+        $name = ucfirst($type) . " Spawner";
 
-        $name = $config->get("spawners")[$type]["name"] ?? ucfirst($type) . " Spawner";
-
-        $item->setCustomName("§e".$name);
+        $item->setCustomName("§r§e".$name);
 
         $item->setLore([
             "§7Level: §e".$level
