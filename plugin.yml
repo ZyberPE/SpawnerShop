@@ -1,0 +1,20 @@
+name: MobSpawners
+main: MobSpawners\Main
+version: 1.0.0
+api: 5.0.0
+author: ZyberPE
+depend: [EconomyAPI]
+
+commands:
+  spawnershop:
+    description: Teleport to spawner shop
+    aliases: [ss]
+
+  spawnergive:
+    description: Give a player a spawner
+    usage: "/spawnergive <player> <spawner> <level> <amount>"
+    permission: spawner.give
+
+permissions:
+  spawner.give:
+    default: op
